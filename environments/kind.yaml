@@ -1,0 +1,5 @@
+env: kind
+valuesRepoURL: https://gitlab.papegames.com/huari/gitops-environment-setup.git
+valuesRevision: main
+valuesDir: kind
+clusterServer: https://kubernetes.default.svc

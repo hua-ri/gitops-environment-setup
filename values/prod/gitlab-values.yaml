@@ -1,0 +1,24 @@
+global:
+  edition: ce
+  hosts:
+    domain: gitlab.example.com
+  ingress:
+    class: nginx
+    configureCertmanager: false
+    tls:
+      enabled: true
+
+certmanager:
+  install: false
+
+nginx-ingress:
+  enabled: false
+
+prometheus:
+  install: false
+
+gitlab-runner:
+  install: true
+
+registry:
+  enabled: true

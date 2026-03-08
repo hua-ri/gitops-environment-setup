@@ -1,0 +1,7 @@
+name: argo-events
+enabled: "true"
+repoURL: https://argoproj.github.io/argo-helm
+chart: argo-events
+version: 2.4.13
+destinationNamespace: argo
+syncWave: "2"

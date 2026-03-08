@@ -1,0 +1,27 @@
+generatorRepo:
+  url: https://gitlab.papegames.com/huari/gitops-environment-setup.git
+  revision: main
+
+environment:
+  file: environments/prod.yaml
+
+project:
+  name: platform-prod
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+
+appSet:
+  name: platform-prod-apps
+  appsFile: apps/prod/*.yaml
+  enabledValue: "true"
+  valuesRootDir: values
+
+syncPolicy:
+  automated: true
+  prune: true
+  selfHeal: true
+
+namespace: argo

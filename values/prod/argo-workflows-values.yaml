@@ -1,0 +1,9 @@
+server:
+  enabled: true
+  extraArgs:
+    - --auth-mode=sso
+
+controller:
+  replicaCount: 2
+  workflowNamespaces:
+    - argo

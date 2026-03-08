@@ -1,0 +1,63 @@
+{{- $appSetName := required "appSet.name is required" .Values.appSet.name -}}
+{{- $generatorRepoURL := required "generatorRepo.url is required" .Values.generatorRepo.url -}}
+{{- $generatorRepoRevision := required "generatorRepo.revision is required" .Values.generatorRepo.revision -}}
+{{- $environmentFile := required "environment.file is required" .Values.environment.file -}}
+{{- $appsFile := required "appSet.appsFile is required" .Values.appSet.appsFile -}}
+{{- $projectName := required "project.name is required" .Values.project.name -}}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ $appSetName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: {{ $generatorRepoURL | quote }}
+              revision: {{ $generatorRepoRevision | quote }}
+              files:
+                - path: {{ $environmentFile | quote }}
+          - git:
+              repoURL: {{ $generatorRepoURL | quote }}
+              revision: {{ $generatorRepoRevision | quote }}
+              files:
+                - path: {{ $appsFile | quote }}
+            selector:
+              matchExpressions:
+                - key: enabled
+                  operator: In
+                  values:
+                    - {{ .Values.appSet.enabledValue | quote }}
+  template:
+    metadata:
+      name: "{{`{{ .env }}-{{ .name }}`}}"
+      namespace: {{ .Values.namespace }}
+      annotations:
+        argocd.argoproj.io/sync-wave: "{{`{{ .syncWave }}`}}"
+    spec:
+      project: {{ $projectName }}
+      sources:
+        - repoURL: "{{`{{ .repoURL }}`}}"
+          chart: "{{`{{ .chart }}`}}"
+          targetRevision: "{{`{{ .version }}`}}"
+          helm:
+            valueFiles:
+              - "$values/{{ .Values.appSet.valuesRootDir }}/{{`{{ .valuesDir }}`}}/{{`{{ .name }}`}}-values.yaml"
+        - repoURL: "{{`{{ .valuesRepoURL }}`}}"
+          targetRevision: "{{`{{ .valuesRevision }}`}}"
+          ref: values
+      destination:
+        server: "{{`{{ .clusterServer }}`}}"
+        namespace: "{{`{{ .destinationNamespace }}`}}"
+      syncPolicy:
+{{- if .Values.syncPolicy.automated }}
+        automated:
+          prune: {{ .Values.syncPolicy.prune }}
+          selfHeal: {{ .Values.syncPolicy.selfHeal }}
+{{- end }}
+        syncOptions:
+          - CreateNamespace=true

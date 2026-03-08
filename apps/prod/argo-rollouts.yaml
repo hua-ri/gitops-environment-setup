@@ -1,0 +1,7 @@
+name: argo-rollouts
+enabled: "true"
+repoURL: https://argoproj.github.io/argo-helm
+chart: argo-rollouts
+version: 2.39.6
+destinationNamespace: argo
+syncWave: "2"

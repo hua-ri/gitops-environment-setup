@@ -1,0 +1,7 @@
+name: gitlab
+enabled: "true"
+repoURL: https://charts.gitlab.io
+chart: gitlab
+version: 8.8.1
+destinationNamespace: gitlab
+syncWave: "4"

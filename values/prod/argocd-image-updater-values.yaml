@@ -1,0 +1,18 @@
+config:
+  argocd:
+    serverAddress: argocd-server.argo.svc:80
+    insecure: true
+
+rbac:
+  enabled: true
+
+serviceAccount:
+  create: true
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 1
+    memory: 1Gi

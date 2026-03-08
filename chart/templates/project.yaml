@@ -1,0 +1,21 @@
+{{- $projectName := required "project.name is required" .Values.project.name -}}
+{{- $environmentFile := required "environment.file is required" .Values.environment.file -}}
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: {{ $projectName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  description: Platform components for {{ $environmentFile }}
+  sourceRepos:
+{{- range .Values.project.sourceRepos }}
+    - {{ . | quote }}
+{{- end }}
+  destinations:
+{{- range .Values.project.destinations }}
+    - namespace: {{ .namespace | quote }}
+      server: {{ .server | quote }}
+{{- end }}
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"

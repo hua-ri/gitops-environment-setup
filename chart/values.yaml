@@ -1,0 +1,29 @@
+nameOverride: ""
+
+generatorRepo:
+  url: ""
+  revision: ""
+
+environment:
+  file: ""
+
+project:
+  name: ""
+  sourceRepos:
+    - "*"
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+
+appSet:
+  name: ""
+  appsFile: ""
+  enabledValue: "true"
+  valuesRootDir: values
+
+syncPolicy:
+  automated: true
+  prune: true
+  selfHeal: true
+
+namespace: argo

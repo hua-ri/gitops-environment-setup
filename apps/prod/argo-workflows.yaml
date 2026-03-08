@@ -1,0 +1,7 @@
+name: argo-workflows
+enabled: "true"
+repoURL: https://argoproj.github.io/argo-helm
+chart: argo-workflows
+version: 0.47.4
+destinationNamespace: argo
+syncWave: "1"

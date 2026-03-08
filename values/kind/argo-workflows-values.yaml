@@ -1,0 +1,8 @@
+server:
+  enabled: true
+  extraArgs:
+    - --auth-mode=server
+
+controller:
+  workflowNamespaces:
+    - argo

@@ -1,0 +1,26 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+  ingress:
+    className: nginx
+    hosts:
+      core: harbor.example.com
+
+externalURL: https://harbor.example.com
+harborAdminPassword: ReplaceMeStrongPassword
+
+persistence:
+  enabled: true
+  resourcePolicy: keep
+  persistentVolumeClaim:
+    registry:
+      size: 200Gi
+    jobservice:
+      size: 20Gi
+    database:
+      size: 50Gi
+    redis:
+      size: 20Gi
+    trivy:
+      size: 50Gi

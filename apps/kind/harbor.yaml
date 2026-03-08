@@ -1,0 +1,7 @@
+name: harbor
+enabled: "true"
+repoURL: https://helm.goharbor.io
+chart: harbor
+version: 1.15.0
+destinationNamespace: harbor
+syncWave: "4"

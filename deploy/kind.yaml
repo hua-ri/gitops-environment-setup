@@ -1,5 +1,5 @@
 generatorRepo:
-  url: https://gitlab.papegames.com/huari/gitops-environment-setup.git
+  url: https://github.com/hua-ri/gitops-environment-setup.git
   revision: main
 
 environment:

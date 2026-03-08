@@ -1,5 +1,5 @@
 env: prod
-valuesRepoURL: https://gitlab.papegames.com/huari/gitops-environment-setup.git
+valuesRepoURL: https://github.com/hua-ri/gitops-environment-setup.git
 valuesRevision: main
 valuesDir: prod
 clusterServer: https://kubernetes.default.svc

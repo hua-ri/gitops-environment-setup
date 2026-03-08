@@ -224,7 +224,7 @@ expose:
 
 ```yaml
 env: kind
-valuesRepoURL: https://gitlab.papegames.com/huari/gitops-environment-setup.git
+valuesRepoURL: https://github.com/hua-ri/gitops-environment-setup.git
 valuesRevision: main
 valuesDir: kind
 clusterServer: https://kubernetes.default.svc

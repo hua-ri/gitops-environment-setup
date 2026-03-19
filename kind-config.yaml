@@ -1,13 +1,13 @@
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 networking:
-  apiServerAddress: "10.10.151.201"
+  apiServerAddress: "192.168.1.19"
 nodes:
   - role: control-plane
     extraPortMappings:
       - containerPort: 6443
         hostPort: 6443
-        listenAddress: "10.10.151.201"
+        listenAddress: "192.168.1.19"
         protocol: tcp
   - role: control-plane
   - role: control-plane

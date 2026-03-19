@@ -3,14 +3,17 @@ auth:
   adminPassword: admin
 
 image:
+  registry: docker.m.daocloud.io
   repository: bitnamilegacy/keycloak
 
 keycloakConfigCli:
   image:
+    registry: docker.m.daocloud.io
     repository: bitnamilegacy/keycloak-config-cli
 
 postgresql:
   image:
+    registry: docker.m.daocloud.io
     repository: bitnamilegacy/postgresql
 
 proxy: edge

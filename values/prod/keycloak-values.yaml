@@ -2,6 +2,17 @@ auth:
   adminUser: admin
   adminPassword: admin
 
+image:
+  repository: bitnamilegacy/keycloak
+
+keycloakConfigCli:
+  image:
+    repository: bitnamilegacy/keycloak-config-cli
+
+postgresql:
+  image:
+    repository: bitnamilegacy/postgresql
+
 proxy: edge
 
 ingress:

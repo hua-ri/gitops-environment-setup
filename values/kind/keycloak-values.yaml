@@ -1,0 +1,11 @@
+auth:
+  adminUser: admin
+  adminPassword: admin
+
+proxy: edge
+
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: keycloak.local.test
+  tls: false

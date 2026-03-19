@@ -12,6 +12,9 @@ keycloakConfigCli:
     repository: bitnamilegacy/keycloak-config-cli
 
 postgresql:
+  auth:
+    password: ReplaceMeKeycloakDBPassword
+    postgresPassword: ReplaceMePostgresSuperuserPassword
   image:
     registry: docker.m.daocloud.io
     repository: bitnamilegacy/postgresql

@@ -2,6 +2,6 @@ name: keycloak
 enabled: "true"
 repoURL: https://charts.bitnami.com/bitnami
 chart: keycloak
-version: 24.4.11
+version: 24.2.0
 destinationNamespace: keycloak
 syncWave: "4"
